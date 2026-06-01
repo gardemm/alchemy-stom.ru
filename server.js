@@ -23,7 +23,7 @@ const fs = require('fs');
 const crypto = require('crypto');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 app.use(express.json({ limit: '64kb' }));
 app.use(express.static(path.join(__dirname, 'public'), {
@@ -134,7 +134,7 @@ async function notifyTelegram(text) {
 }
 
 // --- write lead to disk ---
-const LEADS_FILE = path.join(__dirname, 'leads.jsonl');
+const LEADS_FILE = path.join(__dirname, 'data', 'leads.jsonl');
 function saveLead(lead) {
   fs.appendFileSync(LEADS_FILE, JSON.stringify(lead) + '\n', 'utf8');
 }
