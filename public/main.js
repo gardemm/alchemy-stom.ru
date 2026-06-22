@@ -18,6 +18,35 @@
   els.forEach(el => io.observe(el));
 })();
 
+// ===== Hero metric chips =====
+(() => {
+  const values = document.querySelectorAll('.metric-chip-value');
+  if (!values.length) return;
+
+  const randomInt = (min, max) => Math.floor(min + Math.random() * (max - min + 1));
+  const nextDelay = () => randomInt(4600, 8600);
+
+  values.forEach((value) => {
+    const min = Number(value.dataset.min || 40);
+    const max = Number(value.dataset.max || 220);
+
+    const tick = () => {
+      const current = Number((value.textContent || '').replace(/\D/g, '')) || 0;
+      let next = randomInt(min, max);
+      if (next === current) next = next >= max ? min : next + 1;
+
+      value.classList.add('is-changing');
+      window.setTimeout(() => {
+        value.textContent = `▲ +${next}%`;
+        value.classList.remove('is-changing');
+      }, 280);
+      window.setTimeout(tick, nextDelay());
+    };
+
+    window.setTimeout(tick, nextDelay());
+  });
+})();
+
 // ===== Smooth anchor scroll (account for sticky header) =====
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', (e) => {
