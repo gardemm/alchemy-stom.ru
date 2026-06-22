@@ -482,6 +482,15 @@ body {
   width: 100%;
   height: auto;
 }
+.featured-proof-shot img {
+  object-position: left top;
+}
+@media (min-width: 1024px) {
+  .featured-proof-shot img {
+    height: clamp(300px, 26vw, 380px);
+    object-fit: cover;
+  }
+}
 
 .proof-bar {
   display: flex;
