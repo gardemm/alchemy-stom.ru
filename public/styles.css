@@ -700,22 +700,41 @@ body.lightbox-open { overflow: hidden; }
 .brand-lockup .font-mono {
   text-shadow: 0 0 12px rgba(232,198,106,0.24);
 }
+.footer-brand-lockup {
+  display: inline-flex;
+  width: fit-content;
+  background: linear-gradient(90deg, rgba(212,164,55,0.10), rgba(245,240,230,0.025));
+}
+.footer-brand-lockup .mark-flask {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 46% 34%, rgba(245,240,230,0.76), rgba(232,198,106,0.36) 52%, rgba(107,77,156,0.12) 100%);
+  box-shadow:
+    0 0 0 1px rgba(232,198,106,0.34),
+    0 8px 22px -14px rgba(232,198,106,0.78);
+}
+.footer-brand-lockup .mark-flask img {
+  width: 38px !important;
+  height: 38px !important;
+  filter: drop-shadow(0 2px 5px rgba(8,18,43,0.28));
+}
 .nav-glass .mark-flask {
   width: 42px;
   height: 42px;
   margin: -2px 0;
   border-radius: 50%;
   background:
-    radial-gradient(circle at 46% 34%, rgba(255,255,255,0.92), rgba(245,240,230,0.72) 34%, rgba(232,198,106,0.28) 68%, rgba(232,198,106,0.16) 100%);
+    radial-gradient(circle at 46% 34%, rgba(245,240,230,0.76), rgba(232,198,106,0.36) 52%, rgba(107,77,156,0.12) 100%);
   box-shadow:
-    0 0 0 1px rgba(232,198,106,0.42),
-    0 8px 24px -12px rgba(232,198,106,0.9),
-    inset 0 1px 0 rgba(255,255,255,0.62);
+    0 0 0 1px rgba(232,198,106,0.34),
+    0 8px 22px -14px rgba(232,198,106,0.78);
 }
 .nav-glass .mark-flask img {
   width: 38px !important;
   height: 38px !important;
-  filter: drop-shadow(0 2px 5px rgba(8,18,43,0.32));
+  filter: drop-shadow(0 2px 5px rgba(8,18,43,0.28));
 }
 .hero-logo-stage {
   isolation: isolate;
