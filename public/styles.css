@@ -688,6 +688,60 @@ body.lightbox-open { overflow: hidden; }
   width: 36px; height: 36px;
   display: inline-flex; align-items: center; justify-content: center;
 }
+.brand-lockup {
+  padding: 6px 10px 6px 7px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(245,240,230,0.055), rgba(245,240,230,0.018));
+  border: 1px solid rgba(232,198,106,0.12);
+}
+.brand-lockup .font-display {
+  text-shadow: 0 1px 10px rgba(245,240,230,0.16);
+}
+.brand-lockup .font-mono {
+  text-shadow: 0 0 12px rgba(232,198,106,0.24);
+}
+.nav-glass .mark-flask {
+  width: 42px;
+  height: 42px;
+  margin: -2px 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 46% 34%, rgba(255,255,255,0.92), rgba(245,240,230,0.72) 34%, rgba(232,198,106,0.28) 68%, rgba(232,198,106,0.16) 100%);
+  box-shadow:
+    0 0 0 1px rgba(232,198,106,0.42),
+    0 8px 24px -12px rgba(232,198,106,0.9),
+    inset 0 1px 0 rgba(255,255,255,0.62);
+}
+.nav-glass .mark-flask img {
+  width: 38px !important;
+  height: 38px !important;
+  filter: drop-shadow(0 2px 5px rgba(8,18,43,0.32));
+}
+.hero-logo-stage {
+  isolation: isolate;
+  border-radius: 50%;
+}
+.hero-logo-stage::before {
+  content: "";
+  position: absolute;
+  inset: 8% 4% 10%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 46%, rgba(245,240,230,0.08), rgba(107,77,156,0.07) 42%, transparent 70%);
+  filter: blur(4px);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-logo-stage .logo-base-halo {
+  opacity: 0.45;
+  z-index: 0;
+}
+.hero-logo-stage > img {
+  z-index: 2;
+  filter:
+    drop-shadow(0 12px 24px rgba(0,0,0,0.28))
+    drop-shadow(0 0 10px rgba(232,198,106,0.16))
+    drop-shadow(0 0 10px rgba(143,86,196,0.12));
+}
 
 /* ===== Footer ===== */
 footer a:hover { color: var(--gold-light); }
