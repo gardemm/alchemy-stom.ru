@@ -662,9 +662,13 @@ body.lightbox-open { overflow: hidden; }
 .clinic-photo figcaption .font-mono {
   font-size: 11px !important;
 }
+.clinic-photo figcaption .font-display {
+  font-size: 28px !important;
+  line-height: 1.12;
+}
 .clinic-photo figcaption .text-sm {
-  font-size: 15px !important;
-  line-height: 1.55;
+  font-size: 16px !important;
+  line-height: 1.58;
 }
 .clinic-photo-fallback::after {
   content: "";
