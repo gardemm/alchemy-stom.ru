@@ -1,0 +1,59 @@
+name: Deploy static site to FirstByte
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "public/**"
+      - ".github/workflows/deploy-firstbyte.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-firstbyte-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Check static entrypoint
+        run: test -f public/index.html
+
+      - name: Install lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      - name: Upload public folder to FirstByte
+        env:
+          FIRSTBYTE_HOST: ${{ secrets.FIRSTBYTE_HOST }}
+          FIRSTBYTE_USER: ${{ secrets.FIRSTBYTE_USER }}
+          FIRSTBYTE_PASSWORD: ${{ secrets.FIRSTBYTE_PASSWORD }}
+          FIRSTBYTE_REMOTE_DIR: ${{ secrets.FIRSTBYTE_REMOTE_DIR }}
+          FIRSTBYTE_PROTOCOL: ${{ secrets.FIRSTBYTE_PROTOCOL }}
+        run: |
+          set -euo pipefail
+
+          : "${FIRSTBYTE_HOST:?Missing FIRSTBYTE_HOST secret}"
+          : "${FIRSTBYTE_USER:?Missing FIRSTBYTE_USER secret}"
+          : "${FIRSTBYTE_PASSWORD:?Missing FIRSTBYTE_PASSWORD secret}"
+          : "${FIRSTBYTE_REMOTE_DIR:?Missing FIRSTBYTE_REMOTE_DIR secret}"
+
+          protocol="${FIRSTBYTE_PROTOCOL:-ftp}"
+          remote_dir="$FIRSTBYTE_REMOTE_DIR"
+          case "$remote_dir" in
+            */) ;;
+            *) remote_dir="$remote_dir/" ;;
+          esac
+
+          lftp -u "$FIRSTBYTE_USER","$FIRSTBYTE_PASSWORD" "$protocol://$FIRSTBYTE_HOST" <<EOF
+          set ftp:ssl-allow yes
+          set sftp:auto-confirm yes
+          mirror -R --verbose --exclude-glob .git* --exclude-glob .DS_Store --exclude-glob Thumbs.db ./public/ "$remote_dir"
+          bye
+          EOF
