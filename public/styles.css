@@ -934,3 +934,44 @@ footer a:hover { color: var(--gold-light); }
     line-height: 1.06 !important;
   }
 }
+
+/* ===== Readability uplift ===== */
+main .text-xs,
+footer .text-xs {
+  font-size: 13px;
+}
+
+main .text-sm,
+footer .text-sm,
+main .service-tile li {
+  font-size: 15.5px;
+}
+
+main .text-base,
+footer .text-base {
+  font-size: 17px;
+}
+
+main .text-lg,
+footer .text-lg {
+  font-size: clamp(19px, 1.1vw, 20px);
+}
+
+main .proof-caption {
+  font-size: 13.5px;
+}
+
+main .proof-stat .text-xs {
+  font-size: 13px !important;
+}
+
+.result-row .label,
+.result-row .value {
+  font-size: 15px;
+}
+
+@media (min-width: 1024px) {
+  main .lg\:text-xl {
+    font-size: 21px;
+  }
+}
