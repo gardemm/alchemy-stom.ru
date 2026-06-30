@@ -6,7 +6,7 @@ on:
       - master
     paths:
       - "public/**"
-      - ".github/workflows/deploy-firstbyte.yml"
+      - ".github/workflows/deploy.yml"
   workflow_dispatch:
 
 concurrency:
