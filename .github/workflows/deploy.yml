@@ -52,7 +52,7 @@ jobs:
           esac
 
           lftp -u "$FIRSTBYTE_USER","$FIRSTBYTE_PASSWORD" "$protocol://$FIRSTBYTE_HOST" <<EOF
-          set ftp:ssl-allow yes
+          set ftp:ssl-allow no
           set sftp:auto-confirm yes
           mirror -R --verbose --exclude-glob .git* --exclude-glob .DS_Store --exclude-glob Thumbs.db ./public/ "$remote_dir"
           bye
